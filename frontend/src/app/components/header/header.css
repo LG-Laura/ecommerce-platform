@@ -1,0 +1,15 @@
+header {
+  background-color: black;
+  padding: 20px;
+}
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+::ng-deep nav a:hover {
+  background-color: orange;
+  color: black;
+  border-radius: 15px;
+}
