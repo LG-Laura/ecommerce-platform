@@ -13,7 +13,9 @@
           <p class="descripcion">{{ item.descripcion }}</p>
           <p class="precio">$ {{ item.precio }}</p>
         </div>
-        <button class="btn-remove" (click)="remove(items.indexOf(item))">Eliminar</button>
+        <button class="btn-remove" (click)="remove(items.indexOf(item))">
+          Eliminar
+        </button>
       </li>
       }
     </ul>
@@ -22,24 +24,45 @@
     }
 
     <!-- Formulario para confirmar pedido -->
-    <form [formGroup]="pedidoForm" (ngSubmit)="enviarPedido()" class="pedido-form">
+    <form
+      [formGroup]="pedidoForm"
+      (ngSubmit)="enviarPedido()"
+      class="pedido-form"
+    >
       <label>Email:</label>
-      <input type="email" formControlName="emailCliente" placeholder="Tu email" required />
+      <input
+        type="email"
+        formControlName="emailCliente"
+        placeholder="Tu email"
+        required
+      />
 
       <label>Fecha de Entrega:</label>
       <input type="date" formControlName="fechaEntrega" required />
 
       <label>Observaciones:</label>
-      <textarea formControlName="observaciones" placeholder="Opcional..."></textarea>
+      <textarea
+        formControlName="observaciones"
+        placeholder="Opcional..."
+      ></textarea>
 
-      <button type="submit" class="btn-confirmar"
-              [disabled]="items.length === 0 || pedidoForm.invalid">
+      <button
+        type="submit"
+        class="btn-confirmar"
+        [disabled]="items.length === 0 || pedidoForm.invalid"
+      >
         Confirmar Pedido
       </button>
     </form>
 
     <div class="cart-actions">
-      <button class="btn-clear" (click)="clear()" [disabled]="items.length === 0">Vaciar</button>
+      <button
+        class="btn-clear"
+        (click)="clear()"
+        [disabled]="items.length === 0"
+      >
+        Vaciar
+      </button>
       <button class="btn-close" (click)="close()">Cerrar</button>
     </div>
   </div>

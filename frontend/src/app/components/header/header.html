@@ -2,46 +2,62 @@
   <nav class="navbar-container">
     <!-- Logo -->
     <a routerLink="/" class="logo">
-      <img src="/sonata.png" alt="Logo" />
+      <img src="/logo.png" alt="Logo" />
     </a>
 
     <!-- Botón menú hamburguesa móvil -->
-    <button class="hamburger" (click)="toggleMobileMenu()" aria-label="Abrir menú">
+    <button
+      class="hamburger"
+      (click)="toggleMobileMenu()"
+      aria-label="Abrir menú"
+    >
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
-    <!-- Enlaces de navegación -->
+    <!-- Enlaces de navegación + Acciones de usuario (cliente + carrito) -->
     <div [class.nav-links]="true" [class.active]="mobileMenuOpen">
       <a routerLink="/" (click)="closeMobileMenu()">Inicio</a>
       <a routerLink="/productos" (click)="closeMobileMenu()">Productos</a>
       <a routerLink="/admin" (click)="closeMobileMenu()">Admin</a>
-    </div>
 
-    <!-- Acciones (cliente + carrito) -->
-    <div class="nav-user-actions" (clickOutside)="mostrarOpcionesCliente = false">
+      <!-- Acciones usuario móviles y desktop -->
+      <div
+        class="nav-user-actions"
+        (clickOutside)="mostrarOpcionesCliente = false"
+      >
+        <!-- Cliente dropdown -->
+        <div class="cliente-dropdown" (click)="toggleClienteMenu()">
+          <button class="btn btn-outline-light d-flex align-items-center">
+            <i class="bi bi-person-circle me-2"></i> Cliente
+          </button>
 
-      <!-- Cliente dropdown personalizado -->
-      <div class="cliente-dropdown" (click)="toggleClienteMenu()">
-        <button class="btn btn-outline-light d-flex align-items-center">
-          <i class="bi bi-person-circle me-2"></i> Cliente
+          <ul *ngIf="mostrarOpcionesCliente" class="dropdown-menu-custom">
+            <li>
+              <a routerLink="/login" (click)="closeMobileMenu()"
+                >Iniciar Sesión</a
+              >
+            </li>
+            <li>
+              <a routerLink="/registro" (click)="closeMobileMenu()"
+                >Registrarse</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Carrito -->
+        <button class="cart-button" (click)="toggleCarrito()">
+          <img src="/cart.png" alt="Carrito" />
+          <span class="cart-count">{{ cantidadProductos }}</span>
         </button>
-
-        <ul *ngIf="mostrarOpcionesCliente" class="dropdown-menu-custom">
-          <li><a routerLink="/login" (click)="closeMobileMenu()">Iniciar Sesión</a></li>
-          <li><a routerLink="/registro" (click)="closeMobileMenu()">Registrarse</a></li>
-        </ul>
       </div>
-
-      <!-- Carrito -->
-      <button class="cart-button" (click)="toggleCarrito()">
-        <img src="/cart.png" alt="Carrito" />
-        <span class="cart-count">{{ cantidadProductos }}</span>
-      </button>
     </div>
   </nav>
 
-  <app-cart-modal [visible]="mostrarCarrito" [close]="cerrarCarrito"></app-cart-modal>
+  <app-cart-modal
+    [visible]="mostrarCarrito"
+    [close]="cerrarCarrito"
+  ></app-cart-modal>
 </header>
-

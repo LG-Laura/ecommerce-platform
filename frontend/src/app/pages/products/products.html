@@ -1,42 +1,81 @@
 <div class="container">
   <header>
-    <input type="text" class="search-bar" placeholder="Buscar productos...">
+    <input type="text" class="search-bar" placeholder="Buscar productos..." />
   </header>
 
   <aside class="filters">
     <h2>Filtros</h2>
-    <hr>
+    <hr />
     <div class="filter-section">
       <h3>Aplicar Filtros</h3>
       <ul>
-        <li><input type="checkbox" id="filtro-todos"><label for="filtro-todos"> Todos</label></li>
-        <li><input type="checkbox" id="filtro-red"><label for="filtro-red"> Red</label></li>
+        <li>
+          <input type="checkbox" id="filtro-todos" /><label for="filtro-todos">
+            Todos</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="filtro-red" /><label for="filtro-red">
+            Red</label
+          >
+        </li>
       </ul>
     </div>
-    <hr>
+    <hr />
     <div class="filter-section">
       <h3>Categoría</h3>
       <ul>
-        <li><input type="checkbox" id="categoria-todos"><label for="categoria-todos"> Todos</label></li>
-        <li><input type="checkbox" id="categoria-electrica"><label for="categoria-electrica"> Guitarra eléctrica</label></li>
-        <li><input type="checkbox" id="categoria-electro-acustica"><label for="categoria-electro-acustica"> Guitarra eléctro acústica</label></li>
+        <li>
+          <input type="checkbox" id="categoria-todos" /><label
+            for="categoria-todos"
+          >
+            Todos</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="categoria-electrica" /><label
+            for="categoria-electrica"
+          >
+            Guitarra eléctrica</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="categoria-electro-acustica" /><label
+            for="categoria-electro-acustica"
+          >
+            Guitarra eléctro acústica</label
+          >
+        </li>
       </ul>
     </div>
-    <hr>
+    <hr />
     <div class="filter-section">
       <h3>Estados</h3>
       <ul>
-        <li><input type="checkbox" id="estado-stock"><label for="estado-stock"> Stock</label></li>
-        <li><input type="checkbox" id="estado-agotado"><label for="estado-agotado"> Agotado</label></li>
+        <li>
+          <input type="checkbox" id="estado-stock" /><label for="estado-stock">
+            Stock</label
+          >
+        </li>
+        <li>
+          <input type="checkbox" id="estado-agotado" /><label
+            for="estado-agotado"
+          >
+            Agotado</label
+          >
+        </li>
       </ul>
     </div>
-    <hr>
+    <hr />
   </aside>
 
   <main class="product-list">
     <div *ngFor="let producto of productos" class="product-item">
       <div class="product-image">
-        <img [src]="producto.imageUrl || 'default.jpg'" [alt]="producto.nombre">
+        <img
+          [src]="producto.imageUrl || 'default.jpg'"
+          [alt]="producto.nombre"
+        />
       </div>
       <div class="product-info">
         <h4>{{ producto.nombre }}</h4>
