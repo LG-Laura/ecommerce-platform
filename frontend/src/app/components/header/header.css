@@ -1,15 +1,200 @@
+/* Estilo base */
 header {
-  background-color: black;
-  padding: 20px;
-}
-nav a {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* degradado elegante */
+  padding: 15px 30px;
   color: white;
-  margin: 0 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Navbar flexbox */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+/* Enlaces navegación */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  flex-grow: 1;
+  justify-content: center;
+  transition: max-height 0.3s ease;
+}
+
+.nav-links a {
+  color: white;
   text-decoration: none;
   padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
 }
-::ng-deep nav a:hover {
-  background-color: orange;
-  color: black;
-  border-radius: 15px;
+
+.nav-links a:hover {
+  background-color: #ff7e5f;
+  color: #1b1b1b;
+  box-shadow: 0 4px 10px rgba(255, 126, 95, 0.6);
+}
+
+/* Usuario y carrito */
+.nav-user-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* Carrito */
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+.cart-button:hover {
+  transform: scale(1.1);
+}
+.cart-button img {
+  height: 28px;
+  width: 28px;
+}
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #ff7e5f;
+  color: #1b1b1b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Dropdown cliente */
+.cliente-dropdown {
+  position: relative;
+}
+.btn-outline-light {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 8px 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.btn-outline-light:hover {
+  background-color: #ff7e5f;
+  border-color: #ff7e5f;
+  color: #1b1b1b;
+}
+.dropdown-menu-custom {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  background-color: #1f2937;
+  color: white;
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  min-width: 180px;
+}
+.dropdown-menu-custom li {
+  margin: 0;
+}
+.dropdown-menu-custom a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+}
+.dropdown-menu-custom a:hover {
+  background-color: #ff7e5f;
+  color: #1b1b1b;
+}
+
+/* Menú hamburguesa móvil */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 15px;
+  z-index: 150;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive móvil */
+@media (max-width: 900px) {
+  .nav-links {
+    display: block;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #1f2937;
+    border-radius: 0 0 20px 20px;
+    margin-top: 15px;
+    transition: max-height 0.4s ease;
+  }
+  .nav-links.active {
+    max-height: 300px; /* ajustá según cantidad de links */
+  }
+  .nav-links a {
+    display: block;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #3a4a5c;
+  }
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-user-actions {
+    gap: 12px;
+  }
 }

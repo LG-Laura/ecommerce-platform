@@ -1,0 +1,47 @@
+@if (visible) {
+<div class="modal-backdrop" (click)="handleBackdropClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>🛒 Tu Carrito</h3>
+
+    @if (items.length > 0) {
+    <ul class="cart-list">
+      @for (item of items; track item.id) {
+      <li class="cart-item">
+        <img class="item-img" [src]="item.imageUrl" [alt]="item.nombre" />
+        <div class="item-details">
+          <h4>{{ item.nombre }}</h4>
+          <p class="descripcion">{{ item.descripcion }}</p>
+          <p class="precio">$ {{ item.precio }}</p>
+        </div>
+        <button class="btn-remove" (click)="remove(items.indexOf(item))">Eliminar</button>
+      </li>
+      }
+    </ul>
+    } @else {
+    <p class="empty-message">Tu carrito está vacío. 💤</p>
+    }
+
+    <!-- Formulario para confirmar pedido -->
+    <form [formGroup]="pedidoForm" (ngSubmit)="enviarPedido()" class="pedido-form">
+      <label>Email:</label>
+      <input type="email" formControlName="emailCliente" placeholder="Tu email" required />
+
+      <label>Fecha de Entrega:</label>
+      <input type="date" formControlName="fechaEntrega" required />
+
+      <label>Observaciones:</label>
+      <textarea formControlName="observaciones" placeholder="Opcional..."></textarea>
+
+      <button type="submit" class="btn-confirmar"
+              [disabled]="items.length === 0 || pedidoForm.invalid">
+        Confirmar Pedido
+      </button>
+    </form>
+
+    <div class="cart-actions">
+      <button class="btn-clear" (click)="clear()" [disabled]="items.length === 0">Vaciar</button>
+      <button class="btn-close" (click)="close()">Cerrar</button>
+    </div>
+  </div>
+</div>
+}

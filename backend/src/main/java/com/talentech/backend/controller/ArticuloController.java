@@ -2,7 +2,7 @@ package com.talentech.backend.controller;
 
 
 import com.talentech.backend.model.Article;
-import com.talentech.backend.service.ArticleService;
+import com.talentech.backend.service.ArticuloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,10 @@ import java.util.List;
 @RequestMapping("/api/articles") // Ruta base
 public class ArticleController {
 
-    private final ArticleService articleService;
+    private final ArticuloService articleService;
 
     @Autowired
-    public ArticleController(ArticleService articleService) {
+    public ArticleController(ArticuloService articleService) {
         this.articleService = articleService;
     }
 
